@@ -1,4 +1,4 @@
-seminar-wp8-kick.start-nov-2012
-===============================
+seminar-wp8-sensors
+===================
 
 created for MS Sweden WP8 Kick.Start Nov 2012
