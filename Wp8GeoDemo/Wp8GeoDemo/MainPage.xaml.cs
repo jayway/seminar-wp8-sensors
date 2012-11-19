@@ -42,11 +42,6 @@ namespace Wp8GeoDemo
             //geolocator.PositionChanged += HandlePositionChangedWithReverseGeo;
         }
 
-        void geolocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
-        {
-            Debug.WriteLine("geo status: {0}", args.Status);
-        }
-
         private void HandlePositionChangedSimple(Geolocator sender, PositionChangedEventArgs args)
         {
             DebugWrite("position changed");
@@ -112,6 +107,11 @@ namespace Wp8GeoDemo
                                 };
                 toast.Show();
             }
+        }
+
+        void geolocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
+        {
+            Debug.WriteLine("geo status: {0}", args.Status);
         }
 
         private void DisplayTimedStatus(string text)
