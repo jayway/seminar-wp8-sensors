@@ -57,6 +57,7 @@ namespace Wp8GeoDemo
 
         }
 
+        
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private void Application_Launching(object sender, LaunchingEventArgs e)
@@ -219,5 +220,12 @@ namespace Wp8GeoDemo
                 throw;
             }
         }
+
+        private void PhoneApplicationService_OnRunningInBackground(object sender, RunningInBackgroundEventArgs e)
+        {
+            IsRunningInBackground = true;
+        }
+
+        public static bool IsRunningInBackground { get; set; }
     }
 }
