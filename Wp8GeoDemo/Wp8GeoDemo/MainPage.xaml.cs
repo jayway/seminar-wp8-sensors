@@ -45,9 +45,11 @@ namespace Wp8GeoDemo
         private void HandlePositionChangedSimple(Geolocator sender, PositionChangedEventArgs args)
         {
             DebugWrite("position changed");
+
             var geoposition = args.Position;
             var geocoordinate = geoposition.Coordinate;
             var text = string.Format("You are at: {0}, {1}", geocoordinate.Latitude, geocoordinate.Longitude);
+            
             Dispatcher.BeginInvoke(() => DisplayTextOrToast(text));
         }
 
