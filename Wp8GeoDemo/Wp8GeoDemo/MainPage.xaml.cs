@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Device.Location;
 using System.Diagnostics;
 using System.Linq;
@@ -34,13 +33,13 @@ namespace Wp8GeoDemo
             var geolocator = new Geolocator
             {
                 //ReportInterval = 5000,  //in ms
-                MovementThreshold = 100,
+                MovementThreshold = 20,
                 DesiredAccuracy = PositionAccuracy.High
             };
 
             geolocator.StatusChanged += geolocator_StatusChanged;
-            //geolocator.PositionChanged += HandlePositionChangedSimple;
-            geolocator.PositionChanged += HandlePositionChangedWithReverseGeo;
+            geolocator.PositionChanged += HandlePositionChangedSimple;
+            //geolocator.PositionChanged += HandlePositionChangedWithReverseGeo;
         }
 
         void geolocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
