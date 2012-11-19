@@ -105,16 +105,24 @@ namespace Wp8GeoDemo
                                     };
                     query.QueryCompleted += (s, e) =>
                     {
-                        var location = e.Result.FirstOrDefault();
-                        if (location == null) return;
 
-                        MapAddress address =
-                            location.Information.Address;
-                        string text = "You are at: " +
-                                        address.Street + ", " +
-                                        address.City;
+                        try
+                        {
+                            var location = e.Result.FirstOrDefault();
+                            if (location == null) return;
 
-                        DisplayTextOrToast(text);
+                            MapAddress address =
+                                location.Information.Address;
+                            string text = "You are at: " +
+                                          address.Street + ", " +
+                                          address.City;
+
+                            DisplayTextOrToast(text);
+                        }
+                        catch (Exception exception)
+                        {
+                            DebugWrite(exception.ToString());
+                        }
                     };
 
                     query.QueryAsync();

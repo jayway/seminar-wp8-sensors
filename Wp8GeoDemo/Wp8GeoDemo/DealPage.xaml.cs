@@ -27,5 +27,10 @@ namespace Wp8GeoDemo
 
             DealName.Text = dealName;
         }
+
+        private void BuyButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/DirectionsPage.xaml", UriKind.Relative));
+        }
     }
 }
