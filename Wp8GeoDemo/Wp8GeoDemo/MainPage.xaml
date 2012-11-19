@@ -48,6 +48,8 @@
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock x:Name="StatusText" Text="Idle" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <Button x:Name="AddWalletItem" Content="Add wallet item"
+                    VerticalAlignment="Bottom" Tap="AddWalletItem_OnTap"/>
         </Grid>
 
         <!--Uncomment to see an alignment grid to help ensure your controls are
