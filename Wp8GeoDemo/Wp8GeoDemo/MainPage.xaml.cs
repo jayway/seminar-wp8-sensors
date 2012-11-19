@@ -53,6 +53,18 @@ namespace Wp8GeoDemo
             Dispatcher.BeginInvoke(() => DisplayTextOrToast(text));
         }
 
+        private void DisplayTextOrToast(string text)
+        {
+            if (App.IsRunningInBackground)
+            {
+                ShowMovementToast(text);
+            }
+            else
+            {
+                Dispatcher.BeginInvoke(() => DisplayTimedStatus(text));
+            }
+        }
+
         private void HandlePositionChangedWithReverseGeo(Geolocator sender, PositionChangedEventArgs args)
         {
             try
@@ -94,21 +106,14 @@ namespace Wp8GeoDemo
             }
         }
 
-        private void DisplayTextOrToast(string text)
+        private static void ShowMovementToast(string text)
         {
-            if (!App.IsRunningInBackground)
-            {
-                Dispatcher.BeginInvoke(() => DisplayTimedStatus(text));
-            }
-            else
-            {
-                var toast = new ShellToast
-                                {
-                                    Title = "movement!",
-                                    Content = text
-                                };
-                toast.Show();
-            }
+            var toast = new ShellToast
+                            {
+                                Title = "movement!",
+                                Content = text
+                            };
+            toast.Show();
         }
 
         void geolocator_StatusChanged(Geolocator sender, StatusChangedEventArgs args)
