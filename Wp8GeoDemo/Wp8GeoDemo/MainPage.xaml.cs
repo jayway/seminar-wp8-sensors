@@ -2,15 +2,16 @@
 using System.Device.Location;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Maps.Services;
 using Microsoft.Phone.Shell;
-using Microsoft.Phone.Tasks;
 using Microsoft.Phone.Wallet;
 using Windows.Devices.Geolocation;
+using Windows.Phone.Speech.Recognition;
+using Windows.Phone.Speech.Synthesis;
 
 namespace Wp8GeoDemo
 {
@@ -42,8 +43,8 @@ namespace Wp8GeoDemo
             };
 
             geolocator.StatusChanged += geolocator_StatusChanged;
-            //geolocator.PositionChanged += HandlePositionChangedSimple;
-            geolocator.PositionChanged += HandlePositionChangedWithReverseGeo;
+            geolocator.PositionChanged += HandlePositionChangedSimple;
+            //geolocator.PositionChanged += HandlePositionChangedWithReverseGeo;
         }
 
         private void HandlePositionChangedSimple(Geolocator sender, PositionChangedEventArgs args)
@@ -163,6 +164,17 @@ namespace Wp8GeoDemo
         //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
+
+        public async void SpeechDemo()
+        {
+            var recognizer = new SpeechRecognizerUI();
+            SpeechRecognitionUIResult result = await recognizer.RecognizeWithUIAsync();
+            
+            var response = string.Format("What you said was {0}", result.RecognitionResult.Text);
+            
+            var synthesizer = new SpeechSynthesizer();
+            synthesizer.SpeakTextAsync(response);
+        }
 
         private async void AddWalletItem_OnTap(object sender, GestureEventArgs e)
         {

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Device.Location;
 using System.Linq;
-using System.Net;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Maps.Controls;
 using Microsoft.Phone.Maps.Services;
-using Microsoft.Phone.Shell;
 using Windows.Devices.Geolocation;
 
 namespace Wp8GeoDemo
