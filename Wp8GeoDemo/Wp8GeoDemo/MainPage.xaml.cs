@@ -2,6 +2,7 @@
 using System.Device.Location;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Navigation;
@@ -85,6 +86,9 @@ namespace Wp8GeoDemo
             string textWithDate = string.Format("{0:HH:mm.ss.f}{1}{2}",
                                                 DateTime.Now, Environment.NewLine, text);
             StatusText.Text = textWithDate;
+
+            //var synthesizer = new SpeechSynthesizer();
+            //synthesizer.SpeakTextAsync(text);
         }
 
         private void HandlePositionChangedWithReverseGeo(Geolocator sender, PositionChangedEventArgs args)
@@ -165,7 +169,7 @@ namespace Wp8GeoDemo
         //    ApplicationBar.MenuItems.Add(appBarMenuItem);
         //}
 
-        public async void SpeechDemo()
+        public async Task SpeechDemo()
         {
             var recognizer = new SpeechRecognizerUI();
             SpeechRecognitionUIResult result = await recognizer.RecognizeWithUIAsync();
@@ -195,6 +199,8 @@ namespace Wp8GeoDemo
                            };
             deal.NavigationUri = new Uri("/DealPage.xaml?DealName=" + deal.DisplayName, UriKind.Relative);
             await deal.SaveAsync();
+
+            await SpeechDemo();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Wp8GeoDemo
             string dealName;
             NavigationContext.QueryString.TryGetValue("DealName", out dealName);
             if (string.IsNullOrEmpty(dealName)) return;
-
+            
             DealName.Text = dealName;
         }
 
