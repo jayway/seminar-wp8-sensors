@@ -178,7 +178,7 @@ namespace Wp8GeoDemo
 
         private async void AddWalletItem_OnTap(object sender, GestureEventArgs e)
         {
-            var dealId = "dealId";
+            const string dealId = "dealId";
             var walletItem = Wallet.FindItem(dealId);
             if (walletItem != null)
             {
