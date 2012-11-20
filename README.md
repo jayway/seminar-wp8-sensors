@@ -1,4 +1,4 @@
 seminar-wp8-sensors
 ===================
 
-created for MS Sweden WP8 Kick.Start Nov 2012
+Created for Microsoft Sweden WP8 dev.kickstart Nov 2012
